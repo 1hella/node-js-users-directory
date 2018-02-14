@@ -1,0 +1,9 @@
+#users-form {
+    display:flex;
+    flex-flow: column;
+}
+
+.emails {
+    display:flex;
+    flex-flow: column;
+}
