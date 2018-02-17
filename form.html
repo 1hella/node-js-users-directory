@@ -8,26 +8,32 @@
     <title>Form</title>
     <link rel="stylesheet" href="style.css">
     <script type-"text/javascript" src="form.js"></script>
-    <!-- <script type="text/javascript" src="http://livejs.com/live.js"></script> -->
+    <script type="text/javascript" src="http://livejs.com/live.js"></script>
 </head>
 
 <body>
     <h1>Add Users</h1>
     <form action="/" method="post" id="users-form">
-        <div>
+        <div class="input">
             <label for="firstname">First Name:</label>
             <input type="text" name="firstname" id="firstname">
+        </div>
+        <div class="input">
             <label for="lastname">Last Name:</label>
             <input type="text" name="lastname" id="lastname">
         </div>
-        <label for="birthday">Birthday:</label>
-        <input type="text" name="birthday" id="birthday">
-        <div class="emails">
+        <div class="input">
+            <label for="birthday">Birthday:</label><br>
+            <input type="date" name="birthday" id="birthday">
+        </div>
+        <div class="emails input">
             <label for="email">Emails:</label>
             <input type="email" name="email" id="email">
-            <input type="email" name="email2" id="email2">
         </div>
-        <input type="submit" value="Submit">
+        <div class="input buttons">
+            <input type="button" value="Add more emails">
+            <input type="submit" value="Submit user">    
+        </div>
     </form>
 </body>
 
