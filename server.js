@@ -9,33 +9,41 @@ const port = 8080;
 const dataDir = __dirname + '/data/';
 const usersFile = dataDir + 'users.json';
 
+const HTML_MIME_TYPE = 'text/html';
+const JSON_MIME_TYPE = 'application/json';
+const CSS_MIME_TYPE = 'text/css';
+const JS_MIME_TYPE = 'application/javascript';
+
 const server = http.createServer();
 
 server.on('request', (req, res) => {
     switch (req.url) {
         case '/':
             if (req.method === 'GET') {
-                returnFile('form.html', 'text/html', res)
+                returnFile('form.html', HTML_MIME_TYPE, res)
             } else if (req.method === 'POST') {
                 handlePost(req, res);
             }
 
             break;
         case '/users.json':
-            returnFile('data/users.json', 'application/json', res, () => {
+            returnFile('data/users.json', JSON_MIME_TYPE, res, () => {
                 res.writeHead(200, {
-                    "Content-Type": 'application/json'
+                    "Content-Type": JSON_MIME_TYPE
                 });
 
                 res.write('[]');
                 res.end();
             });
             break;
+        case '/users.html':
+            returnFile('users.html', HTML_MIME_TYPE, res);
+            break;
         case '/style.css':
-            returnFile('style.css', 'text/css', res);
+            returnFile('style.css', CSS_MIME_TYPE, res);
             break;
         case '/form.js':
-            returnFile('form.js', 'application/javascript', res);
+            returnFile('form.js', JS_MIME_TYPE, res);
             break;
         default:
             res.writeHead(404);
@@ -75,7 +83,7 @@ function handlePost(req, res) {
             console.log("The user was saved!");
         });
 
-        returnFile('form.html', 'text/html', res);
+        returnFile('form.html', HTML_MIME_TYPE, res);
     });
 }
 
