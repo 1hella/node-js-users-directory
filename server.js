@@ -21,6 +21,16 @@ server.on('request', (req, res) => {
             }
 
             break;
+        case '/users.json':
+            returnFile('data/users.json', 'application/json', res, () => {
+                res.writeHead(200, {
+                    "Content-Type": 'application/json'
+                });
+
+                res.write('[]');
+                res.end();
+            });
+            break;
         case '/style.css':
             returnFile('style.css', 'text/css', res);
             break;
@@ -89,12 +99,16 @@ function parseUser(user) {
     return newUser;
 }
 
-function returnFile(fileName, mimeType, res) {
+function returnFile(fileName, mimeType, res, errCallback) {
     fs.readFile(fileName, (err, data) => {
         if (err) {
-            console.log(`err: ${err}`);
-            res.writeHead(500, 'something wrong');
-            res.end();
+            if (errCallback) {
+                errCallback();
+            } else {
+                console.log(`err: ${err}`);
+                res.writeHead(500, 'something wrong');
+                res.end();
+            }
             return;
         }
 

@@ -3,21 +3,12 @@
     flex-flow: column;
 }
 
-.emails {
-    /* display:flex; */
-    /* flex-flow: column; */
-}
-
 .input {
     margin-top: 10px;
 }
 
-input[type="text"], input[type="date"], input[type="email"] {
+label ~ input {
     display: block;
     width: 250px;
     max-width: 100%;
-}
-
-.buttons > input {
-    display: inline-block;
 }

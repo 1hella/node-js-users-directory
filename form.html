@@ -7,8 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Form</title>
     <link rel="stylesheet" href="style.css">
-    <script type-"text/javascript" src="form.js"></script>
-    <script type="text/javascript" src="http://livejs.com/live.js"></script>
+    <script src="form.js"></script>
+    <!-- <script src="http://livejs.com/live.js"></script> -->
 </head>
 
 <body>
@@ -23,16 +23,16 @@
             <input type="text" name="lastname" id="lastname">
         </div>
         <div class="input">
-            <label for="birthday">Birthday:</label><br>
+            <label for="birthday">Birthday:</label>
             <input type="date" name="birthday" id="birthday">
         </div>
         <div class="emails input">
             <label for="email">Emails:</label>
             <input type="email" name="email" id="email">
         </div>
-        <div class="input buttons">
-            <input type="button" value="Add more emails">
-            <input type="submit" value="Submit user">    
+        <div class="input">
+            <input type="button" id="add-email" value="Add more emails">
+            <input type="submit" value="Submit user">
         </div>
     </form>
 </body>
