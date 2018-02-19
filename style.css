@@ -8,6 +8,8 @@ h2 {
 
 body {
     background-color: #e6ecf0;
+    display: flex;
+    flex-flow: column;
 }
 
 main,
@@ -64,7 +66,7 @@ footer {
 }
 
 section {
-    margin:auto;
+    margin: auto;
 }
 
 /* Add user */
@@ -115,6 +117,10 @@ table {
     margin-bottom: 20px;
 }
 
+#table {
+    overflow-x: auto;
+}
+
 table,
 th,
 td {
@@ -138,4 +144,36 @@ tr>td:last-child {
 td>a.delete {
     text-decoration: none;
     color: red;
+}
+
+.mobile-title {
+    display: none;
+}
+
+@media only screen and (max-width: 624px) {
+    /* mobile */
+    nav {
+        -webkit-flex-flow: column;
+        flex-flow: column;
+        order: 98;
+    }
+    
+    footer {
+        order: 99;
+    }
+
+    nav>a.title {
+        display: none;
+    }
+    
+    .mobile-title {
+        display: flex;
+        order: -1;
+        text-align: center;
+    }
+
+    .mobile-title > a {
+        font-size: 1.5em;
+        font-weight: bold;
+    }
 }

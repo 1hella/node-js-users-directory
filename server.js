@@ -97,6 +97,9 @@ function returnUsers(res) {
                     <title>Users</title>
                 </head>
                 <body>
+                    <nav class="mobile-title">
+                        <a href="./">Stephen's User Directory</a>
+                    </nav>
                     <nav>
                         <a href="./" class="title">Stephen's User Directory</a>
                         <a href="./">Add User</a>
@@ -110,6 +113,7 @@ function returnUsers(res) {
 
     if (users.length > 0) {
         html += `<div id="list">
+                    <div id="table">
                     <table>
                         <thead>
                             <tr>
@@ -141,6 +145,7 @@ function returnUsers(res) {
 
         html += `</tbody>
                     </table>
+                    </div>
                 <button class="delete">Delete all</button>
                 </div>`
     } else {
