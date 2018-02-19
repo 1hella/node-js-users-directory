@@ -66,7 +66,7 @@ server.on('request', (req, res) => {
 
 function handleDelete(req, res) {
     let urlObj = url.parse(req.url, true);
-    
+
     if (!urlObj.query.u) {
         saveUsers([]);
     } else {
@@ -106,8 +106,10 @@ function returnUsers(res) {
                     </nav>
                     <main>
                     <section>
-                    <h2>Users</h2>
-                    <div id="list">
+                    <h2>Users</h2>`;
+
+    if (users.length > 0) {
+        html += `<div id="list">
                     <table>
                         <thead>
                             <tr>
@@ -120,28 +122,32 @@ function returnUsers(res) {
                         </thead>
                         <tbody>`;
 
-    for (let i = 0; i < users.length; i++) {
-        let user = users[i];
-        html += `<tr>
+        for (let i = 0; i < users.length; i++) {
+            let user = users[i];
+            html += `<tr>
                 <td>${user.firstname}</td>
                 <td>${user.lastname}</td>
                 <td>${user.birthday}</td>
                 <td>`;
 
-        for (let email of user.emails) {
-            html += email + '<br>';
-        }
+            for (let email of user.emails) {
+                html += email + '<br>';
+            }
 
-        html += `</td>
+            html += `</td>
                 <td><a href="#" class="delete" data-index="${i}">X</a></td>
                 </tr>`;
-    }
+        }
 
-    html += `</tbody>
+        html += `</tbody>
                     </table>
                 <button class="delete">Delete all</button>
-                </div>
-                </section>
+                </div>`
+    } else {
+        html += `<h3>No users. Add some <a href="./">here</a>!</h3>`;
+    }
+
+    html += `</section>
                 </main>
                 <footer>Copyright &copy; 2018 <a href="//twitter.com/wanhella">Stephen Wanhella</a></footer>
                 </body>

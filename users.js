@@ -1,17 +1,4 @@
 window.onload = () => {
-    if (document.getElementsByTagName('tr').length === 1) {
-        // no users
-        let link = '<h3>No users. Add some <a href="./">here</a>!</h3>';
-        let list = document.getElementById('list');
-        let section = list.parentElement;
-        section.removeChild(list);
-        section.innerHTML += link;
-    } else {
-        setEventListeners();
-    }
-}
-
-function setEventListeners() {
     let deleteButtons = document.getElementsByClassName('delete');
     let deleteListener = (e) => {
         e.preventDefault();
