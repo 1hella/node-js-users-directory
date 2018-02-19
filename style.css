@@ -1,5 +1,5 @@
 body {
-    padding: 0 20px;
+    padding: 0 30px;
 }
 
 #users-form {
@@ -20,4 +20,20 @@ label ~ input {
 nav > a {
     text-decoration: none;
     margin-right: 10px;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+th, td {
+    padding: 5px;
+}
+
+th, tr:nth-child(even) {
+    background-color: #dddddd;
 }

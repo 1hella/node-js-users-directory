@@ -37,7 +37,7 @@ server.on('request', (req, res) => {
             });
             break;
         case '/users.html':
-            returnFile('users.html', HTML_MIME_TYPE, res);
+            returnUsers(res);
             break;
         case '/style.css':
             returnFile('style.css', CSS_MIME_TYPE, res);
@@ -51,6 +51,63 @@ server.on('request', (req, res) => {
     }
 });
 
+function returnUsers(res) {
+    res.writeHead(200, {
+        'Content-Type': HTML_MIME_TYPE
+    });
+
+    let users = getUsers();
+    let html = `<!DOCTYPE html>
+                <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                    <link rel="stylesheet" href="style.css">
+                    <title>Users</title>
+                </head>
+                <body>
+                    <nav>
+                        <a href="/">Add User</a>
+                        <a href="/users.html">List Users</a>
+                        <a href="/users.json">Users.json</a>
+                    </nav>
+                    <h1>List Users</h1>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Firstname</th>
+                                <th>Lastname</th>
+                                <th>Birthday</th>
+                                <th>Emails</th>
+                            </tr>
+                        </thead>
+                        <tbody>`;
+
+    for (let user of users) {
+        html += `<tr>
+                <td>${user.firstname}</td>
+                <td>${user.lastname}</td>
+                <td>${user.birthday}</td>
+                <td>`;
+
+        for (let email of user.emails) {
+            html += email + '<br>';
+        }
+
+        html += `</td>
+                </tr>`;
+    }
+
+    html += `</tbody>
+                    </table>
+                    
+                </body>
+                </html>`;
+    res.write(html);
+    res.end();
+}
+
 function handlePost(req, res) {
     let body = '';
 
@@ -60,18 +117,7 @@ function handlePost(req, res) {
 
     req.on('end', () => {
         let user = parseUser(qs.parse(body));
-        let users = [];
-        
-        if (!fs.existsSync(dataDir)) {
-            fs.mkdirSync(dataDir);
-        } else {
-            try {
-                let content = fs.readFileSync(usersFile);
-                users = JSON.parse(content);
-            } catch (err) {
-                // do nothing
-            }
-        }
+        let users = getUsers();
 
         users.push(user);
 
@@ -87,15 +133,32 @@ function handlePost(req, res) {
     });
 }
 
+function getUsers() {
+    let users = [];
+
+    if (!fs.existsSync(dataDir)) {
+        fs.mkdirSync(dataDir);
+    } else {
+        try {
+            let content = fs.readFileSync(usersFile);
+            users = JSON.parse(content);
+        } catch (err) {
+            // do nothing
+        }
+    }
+
+    return users;
+}
+
 // turns { email: 1, email1: 2, email2: 3 }
 // into { emails: [1, 2, 3] }
 function parseUser(user) {
     let emails = [];
     let newUser = {};
-    
+
     for (let key in user) {
         let value = user[key];
-        
+
         if (key.startsWith('email')) {
             emails.push(value);
         } else {
