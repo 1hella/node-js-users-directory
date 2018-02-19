@@ -120,7 +120,7 @@ function returnUsers(res) {
                                 <th>Firstname</th>
                                 <th>Lastname</th>
                                 <th>Birthday</th>
-                                <th>Emails</th>
+                                <th>Email(s)</th>
                                 <th>Delete</th>
                             </tr>
                         </thead>
