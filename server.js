@@ -210,7 +210,7 @@ function parseUser(user) {
     for (let key in user) {
         let value = user[key];
 
-        if (key.startsWith('email')) {
+        if (key.startsWith('email') && value !== "") {
             emails.push(value);
         } else {
             newUser[key] = value;
