@@ -13,33 +13,42 @@
 
 <body>
     <nav>
-        <a href="/">Add User</a>
+        <a href="/" class="title">Stephen's User Directory</a>
+        <a href="/" class="active">Add User</a>
         <a href="/users.html">List Users</a>
+        <a href="/about.html">About</a>
         <a href="/users.json">Users.json</a>
     </nav>
-    <h1>Add Users</h1>
-    <form action="/" method="post" id="users-form">
-        <div class="input">
-            <label for="firstname">First Name:</label>
-            <input type="text" name="firstname" id="firstname" required>
-        </div>
-        <div class="input">
-            <label for="lastname">Last Name:</label>
-            <input type="text" name="lastname" id="lastname" required>
-        </div>
-        <div class="input">
-            <label for="birthday">Birthday:</label>
-            <input type="date" name="birthday" id="birthday" required>
-        </div>
-        <div class="emails input">
-            <label for="email">Emails:</label>
-            <input type="email" name="email" id="email" required>
-        </div>
-        <div class="input">
-            <input type="button" id="add-email" value="Add more emails">
-            <input type="submit" value="Submit user">
-        </div>
-    </form>
+    <main>
+        <section>
+            <h2>Add Users</h2>
+            <form action="/" method="post" id="users-form">
+                <div class="input">
+                    <label for="firstname">First Name:</label>
+                    <input type="text" name="firstname" id="firstname" required>
+                </div>
+                <div class="input">
+                    <label for="lastname">Last Name:</label>
+                    <input type="text" name="lastname" id="lastname" required>
+                </div>
+                <div class="input">
+                    <label for="birthday">Birthday:</label>
+                    <input type="date" name="birthday" id="birthday" required>
+                </div>
+                <div class="emails input">
+                    <label for="email">Email(s):</label>
+                    <input type="email" name="email" id="email" required>
+                </div>
+                <div class="input">
+                    <input type="button" id="add-email" value="Add more emails">
+                    <input type="submit" value="Submit user">
+                </div>
+            </form>
+        </section>
+    </main>
+    <footer>Copyright &copy; 2018
+        <a href="//twitter.com/wanhella">Stephen Wanhella</a>
+    </footer>
 </body>
 
 </html>

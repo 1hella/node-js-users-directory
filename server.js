@@ -49,6 +49,9 @@ server.on('request', (req, res) => {
         case '/form.js':
             returnFile('form.js', JS_MIME_TYPE, res);
             break;
+        case '/about.html':
+            returnFile('about.html', HTML_MIME_TYPE, res);
+            break;
         default:
             if (req.url.startsWith('/users') && req.method === 'DELETE') {
                 handleDelete(req, res);
@@ -95,11 +98,15 @@ function returnUsers(res) {
                 </head>
                 <body>
                     <nav>
+                        <a href="/" class="title">Stephen's User Directory</a>
                         <a href="/">Add User</a>
-                        <a href="/users.html">List Users</a>
+                        <a href="/users.html" class="active">List Users</a>
+                        <a href="/about.html">About</a>
                         <a href="/users.json">Users.json</a>
                     </nav>
-                    <h1>Users</h1>
+                    <main>
+                    <h2>Users</h2>
+                    <section>
                     <table>
                         <thead>
                             <tr>
@@ -132,6 +139,9 @@ function returnUsers(res) {
     html += `</tbody>
                     </table>
                 <button class="delete">Delete all</button>
+                <section>
+                </main>
+                <footer>Copyright &copy; 2018 <a href="//twitter.com/wanhella">Stephen Wanhella</a></footer>
                 </body>
                 </html>`;
     res.write(html);

@@ -7,3 +7,5 @@ https://stackoverflow.com/questions/14391690/how-to-capture-no-file-for-fs-readf
 https://stackoverflow.com/questions/19663093/apply-gitignore-on-an-existing-repository-already-tracking-large-number-of-files
 https://www.w3schools.com/html/html_tables.asp
 https://www.sitepoint.com/guide-vanilla-ajax-without-jquery/
+https://blog.mariusschulz.com/2016/07/16/removing-elements-from-javascript-arrays
+https://medium.com/flexbox-and-grids/the-most-popular-navigation-bars-created-with-flexbox-6c0f59f55686
