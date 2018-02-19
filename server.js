@@ -149,7 +149,7 @@ function returnUsers(res) {
 
     html += `</section>
                 </main>
-                <footer>Copyright &copy; 2018 <a href="//twitter.com/wanhella">Stephen Wanhella</a></footer>
+                <footer>Copyright &copy; 2018 <a target="_blank" href="//twitter.com/wanhella">Stephen Wanhella</a></footer>
                 </body>
                 </html>`;
     res.write(html);
