@@ -12,3 +12,4 @@ https://medium.com/flexbox-and-grids/the-most-popular-navigation-bars-created-wi
 https://www.w3schools.com/jsref/met_node_appendchild.asp
 https://www.w3schools.com/jsref/met_element_setattribute.asp
 https://stackoverflow.com/questions/3387427/remove-element-by-id
+https://www.w3schools.com/howto/howto_css_table_responsive.asp
