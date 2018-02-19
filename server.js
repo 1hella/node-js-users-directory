@@ -105,8 +105,9 @@ function returnUsers(res) {
                         <a href="/users.json">Users.json</a>
                     </nav>
                     <main>
-                    <h2>Users</h2>
                     <section>
+                    <h2>Users</h2>
+                    <div id="list">
                     <table>
                         <thead>
                             <tr>
@@ -139,7 +140,8 @@ function returnUsers(res) {
     html += `</tbody>
                     </table>
                 <button class="delete">Delete all</button>
-                <section>
+                </div>
+                </section>
                 </main>
                 <footer>Copyright &copy; 2018 <a href="//twitter.com/wanhella">Stephen Wanhella</a></footer>
                 </body>

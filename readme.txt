@@ -9,3 +9,6 @@ https://www.w3schools.com/html/html_tables.asp
 https://www.sitepoint.com/guide-vanilla-ajax-without-jquery/
 https://blog.mariusschulz.com/2016/07/16/removing-elements-from-javascript-arrays
 https://medium.com/flexbox-and-grids/the-most-popular-navigation-bars-created-with-flexbox-6c0f59f55686
+https://www.w3schools.com/jsref/met_node_appendchild.asp
+https://www.w3schools.com/jsref/met_element_setattribute.asp
+https://stackoverflow.com/questions/3387427/remove-element-by-id

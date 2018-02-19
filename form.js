@@ -3,7 +3,14 @@ window.onload = () => {
     const addEmailButton = document.getElementById('add-email');
     const emailDiv = document.getElementsByClassName('emails')[0];
     addEmailButton.addEventListener('click', () => {
-        emailDiv.innerHTML += `<input type="email" name="email${emailNumber}" id="email${emailNumber}">`
+        let id = `email${ emailNumber }`;
+        let input = document.createElement("input");
+
+        input.setAttribute('type', 'email');
+        input.setAttribute('name', id);
+        input.setAttribute('id', id);
+
+        emailDiv.appendChild(input);
         emailNumber++;
     });
 };
