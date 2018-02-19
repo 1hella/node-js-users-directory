@@ -5,8 +5,8 @@ const fs = require('fs');
 const qs = require('querystring');
 const url = require('url');
 
-// const port = 24606;
-const port = 8080;
+const port = 24606;
+// const port = 8080;
 const dataDir = __dirname + '/data/';
 const usersFile = dataDir + 'users.json';
 
@@ -98,11 +98,11 @@ function returnUsers(res) {
                 </head>
                 <body>
                     <nav>
-                        <a href="/" class="title">Stephen's User Directory</a>
-                        <a href="/">Add User</a>
-                        <a href="/users.html" class="active">List Users</a>
-                        <a href="/about.html">About</a>
-                        <a href="/users.json">Users.json</a>
+                        <a href="./" class="title">Stephen's User Directory</a>
+                        <a href="./">Add User</a>
+                        <a href="./users.html" class="active">Users</a>
+                        <a href="./about.html">About</a>
+                        <a href="./users.json">Users.json</a>
                     </nav>
                     <main>
                     <section>

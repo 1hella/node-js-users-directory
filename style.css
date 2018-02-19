@@ -37,10 +37,6 @@ nav>a {
     padding: 10px 20px;
 }
 
-nav>a.active {
-    /* background-color: 242729; */
-}
-
 nav>a,
 nav>a:visited {
     color: black;
