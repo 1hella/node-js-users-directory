@@ -6,3 +6,4 @@ https://stackoverflow.com/questions/12899061/creating-a-file-only-if-it-doesnt-e
 https://stackoverflow.com/questions/14391690/how-to-capture-no-file-for-fs-readfilesync
 https://stackoverflow.com/questions/19663093/apply-gitignore-on-an-existing-repository-already-tracking-large-number-of-files
 https://www.w3schools.com/html/html_tables.asp
+https://www.sitepoint.com/guide-vanilla-ajax-without-jquery/

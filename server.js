@@ -3,6 +3,7 @@
 const http = require('http');
 const fs = require('fs');
 const qs = require('querystring');
+const url = require('url');
 
 // const port = 24606;
 const port = 8080;
@@ -39,6 +40,9 @@ server.on('request', (req, res) => {
         case '/users.html':
             returnUsers(res);
             break;
+        case '/users.js':
+            returnFile('users.js', JS_MIME_TYPE, res);
+            break;
         case '/style.css':
             returnFile('style.css', CSS_MIME_TYPE, res);
             break;
@@ -46,10 +50,32 @@ server.on('request', (req, res) => {
             returnFile('form.js', JS_MIME_TYPE, res);
             break;
         default:
+            if (req.url.startsWith('/users') && req.method === 'DELETE') {
+                handleDelete(req, res);
+                break;
+            }
+
             res.writeHead(404);
             res.end();
+            break;
     }
 });
+
+function handleDelete(req, res) {
+    let urlObj = url.parse(req.url, true);
+    
+    if (!urlObj.query.u) {
+        saveUsers([]);
+    } else {
+        let index = Number(urlObj.query.u);
+        let users = getUsers(index);
+        users.splice(index, 1);
+        saveUsers(users);
+    }
+
+    res.writeHead(200);
+    res.end();
+}
 
 function returnUsers(res) {
     res.writeHead(200, {
@@ -64,6 +90,7 @@ function returnUsers(res) {
                     <meta name="viewport" content="width=device-width, initial-scale=1.0">
                     <meta http-equiv="X-UA-Compatible" content="ie=edge">
                     <link rel="stylesheet" href="style.css">
+                    <script src="users.js"></script>
                     <title>Users</title>
                 </head>
                 <body>
@@ -72,7 +99,7 @@ function returnUsers(res) {
                         <a href="/users.html">List Users</a>
                         <a href="/users.json">Users.json</a>
                     </nav>
-                    <h1>List Users</h1>
+                    <h1>Users</h1>
                     <table>
                         <thead>
                             <tr>
@@ -80,11 +107,13 @@ function returnUsers(res) {
                                 <th>Lastname</th>
                                 <th>Birthday</th>
                                 <th>Emails</th>
+                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>`;
 
-    for (let user of users) {
+    for (let i = 0; i < users.length; i++) {
+        let user = users[i];
         html += `<tr>
                 <td>${user.firstname}</td>
                 <td>${user.lastname}</td>
@@ -96,12 +125,13 @@ function returnUsers(res) {
         }
 
         html += `</td>
+                <td><a href="#" class="delete" data-index="${i}">X</a></td>
                 </tr>`;
     }
 
     html += `</tbody>
                     </table>
-                    
+                <button class="delete">Delete all</button>
                 </body>
                 </html>`;
     res.write(html);
@@ -120,16 +150,19 @@ function handlePost(req, res) {
         let users = getUsers();
 
         users.push(user);
-
-        fs.writeFile(usersFile, JSON.stringify(users), function (err) {
-            if (err) {
-                return console.log(err);
-            }
-
-            console.log("The user was saved!");
-        });
+        saveUsers(users);
 
         returnFile('form.html', HTML_MIME_TYPE, res);
+    });
+}
+
+function saveUsers(users) {
+    fs.writeFile(usersFile, JSON.stringify(users), (err) => {
+        if (err) {
+            return console.log(err);
+        }
+
+        console.log("The user was saved!");
     });
 }
 
