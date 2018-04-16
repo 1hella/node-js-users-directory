@@ -5,8 +5,7 @@ const fs = require('fs');
 const qs = require('querystring');
 const url = require('url');
 
-const port = 24606;
-// const port = 8080;
+const port = process.env.PORT || 3000;
 const dataDir = __dirname + '/data/';
 const usersFile = dataDir + 'users.json';
 
